@@ -1,21 +1,9 @@
-let arrayofTasks = []; // Declare array for storing tasks
-let catDropdown = document.getElementById("categoryDropdown");
-let categoryDisplay = document.getElementById("selectedCategoryValue");
-
-// Get task name input from browser
+let arrayofTasks = [];
 let taskInput = document.getElementById("taskItem");
 let addTaskItem = document.getElementById("addTaskItemButton");
+let taskList = document.getElementById("taskList");
 
-
-// Get task category from browser
-categoryDropdown.addEventListener("change", function() {
-  const selectedValue = this.value;
-  display.textContent = `Selected value: ${selectedValue}`;
-});
-
-
-
-// let taskItem = {
+// let taskItem (taskName, taskCategory, taskDeadline, taskProgress)= {
 //     // taskName: "Call Doctor",
 //     // taskCategory: "Work, Home, Family, Health&Wellness",
 //     // taskDueBy: "date",
@@ -28,7 +16,6 @@ categoryDropdown.addEventListener("change", function() {
 //     }
 // };
 
-// Display Task 
 addTaskItemButton.addEventListener("click", function () {
     let taskValue = taskInput.value;
 
@@ -37,10 +24,9 @@ addTaskItemButton.addEventListener("click", function () {
         return;
     }
 
-    //checkDuplicateItem(item);
     arrayofTasks.push(taskValue);
     renderTaskList();
-    taskInput.value = ""; // Clear the input field
+    taskValue = ""; // Clear the input field
 });
 
 

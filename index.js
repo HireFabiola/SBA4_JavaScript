@@ -1,40 +1,92 @@
 let arrayofTasks = [];
-let taskInput = document.getElementById("taskItem");
-let addTaskItem = document.getElementById("addTaskItemButton");
-let taskList = document.getElementById("taskList");
 
-// let taskItem (taskName, taskCategory, taskDeadline, taskProgress)= {
-//     // taskName: "Call Doctor",
-//     // taskCategory: "Work, Home, Family, Health&Wellness",
-//     // taskDueBy: "date",
-//     // taskStatus: "In Progress, Completed, Overdue",
+let addTaskItem = document.getElementById("submit");
 
-//     // filterTasks: function () {
-//     //     //filter tasks by status or category
+addTaskItem.addEventListener("click", function () {
 
-//     renderTaskList()
+    let taskName = document.getElementById("Description").value;
+    let taskCategory = document.getElementById("categoryDropdown").value;
+    let taskDueDate = document.getElementById("dueDate").value;
+    let taskProgress = document.getElementById("statusDropdown").value;
+
+    let taskItem = {
+        name_description: taskName,
+        category: taskCategory,
+        deadline: taskDueDate,
+        progress: taskProgress,
+    };
+
+    arrayofTasks.push(taskItem);
+    console.log(taskItem);
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let taskName = document.getElementById("Description").value;
+// let addTaskItem = document.getElementById("addTaskItemButton");
+// let taskList = document.getElementById("taskList");
+// let taskProgress = document.getElementById("progressDropdown");
+
+
+// let taskItem () = {
+//     taskName: 
+//     taskCategory: "Work, Home, Family, Health&Wellness",
+//     taskDueBy: "date",
+//     taskProgress: "In Progress, Completed, Overdue",
+
+//     filterTasks: function () {
+// filter tasks by status or category
+
+//         renderTaskList()
 //     }
 // };
 
-addTaskItemButton.addEventListener("click", function () {
-    let taskValue = taskInput.value;
+// addTaskItemButton.addEventListener("click", function () {
+//     let taskValue = taskInput.value;
 
-    if (taskValue === "") {
-        alert("Please enter an item.");
-        return;
-    }
+//     if (taskValue === "") {
+//         alert("Please enter an item.");
+//         return;
+//     }
 
-    arrayofTasks.push(taskValue);
-    renderTaskList();
-    taskValue = ""; // Clear the input field
-});
+//     // Add a change event listener
+//     progressDropdown.addEventListener("change", function () {
+//         // Get the selected value using the .value property
+//         let selectedValue = progressDropdown.value;
+
+//         // Display the value (or perform any other action)
+//         document.getElementById("selectedProgressValue").textContent = selectedValue;
+//         console.log("Selected value:", selectedValue);
+//     });
+
+//     arrayofTasks.push(taskItem)
+//     renderTaskList();
+//     taskValue = ""; // Clear the input field
+// });
 
 
-function renderTaskList() {
-    taskList.innerHTML = ""; // Clear existing list
-    for (let i = 0; i < arrayofTasks.length; i++) {
-        let taskListItem = document.createElement("li");
-        taskListItem.innerText = arrayofTasks[i];
-        taskList.appendChild(taskListItem);
-    }
-}
+// function renderTaskList() {
+//     taskList.innerHTML = ""; // Clear existing list
+//     for (let i = 0; i < arrayofTasks.length; i++) {
+//         let taskListItem = document.createElement("li");
+//         taskListItem.innerText = arrayofTasks[i];
+//         taskList.appendChild(taskListItem);
+//     }
+// }

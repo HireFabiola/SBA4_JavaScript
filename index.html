@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SBA4: TaskApp</title>
 
+    <!-- JavaScript invocation script-->
     <script defer src="index.js"></script>
 </head>
 
 <body>
-
+    <!-- Get task name or description from user-->
     <input id="taskItem" type="text" placeholder="Enter task name or description" />
     <button id="addTaskItemButton">Add Task</button>
     <ul id="taskList"></ul>
+
+
+    <!--Have user select category with a dropdown selection list-->
+    <select id="categoryDropdown">
+        <option value="" disabled selected>--Select an option--</option>
+        <option value="option1">Work</option>
+        <option value="option2">Home</option>
+        <option value="option3">Family</option>
+        <option value="option3">Health & Wellness</option>
+    </select>
+    <p id="selectedCategoryValue"></p>
+
+    <!-- Have user select task due date-->
+    <label for="taskDueBy">Due by:</label>
+    <input type="date" id="taskDueDate" name="taskDueDate" />
+
+     <!--Have user select progress status-->
+    <select id="progressDropdown">
+        <option value="" disabled selected>--Not Started--</option>
+        <option value="option1">In Progress</option>
+        <option value="option2">Completed</option>
+    
+    </select>
+    <p id="selectedProgressValue"></p>
+
+
 </body>
+
 </html>

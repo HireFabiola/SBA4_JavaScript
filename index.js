@@ -1,6 +1,6 @@
 let arrayofTasks = [];
-let itemInput = document.getElementById("itemInput");
-let addItemButton = document.getElementById("addItemButton");
+let taskName = document.getElementById("taskItem");
+let addTaskItemButton = document.getElementById("addTaskItemButton");
 let removeItemButton = document.getElementById("removeItemButton");
 let cartList = document.getElementById("cart");
 

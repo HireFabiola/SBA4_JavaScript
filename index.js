@@ -1,7 +1,15 @@
-let arrayofTasks = [];
+let arrayofTasks = []; // Declare array for storing tasks
+
+
+// Get task name input from browser
 let taskInput = document.getElementById("taskItem");
 let addTaskItem = document.getElementById("addTaskItemButton");
-let taskList = document.getElementById("taskList");
+
+
+// Get task category from browser
+let taskCatogery= document.getElementById("taskItem");
+let addTaskCategory = document.getElementById("addTaskItemButton");
+let taskListCategory = document.getElementById("taskListCategory");
 
 // let taskItem = {
 //     // taskName: "Call Doctor",
@@ -16,7 +24,7 @@ let taskList = document.getElementById("taskList");
 //     }
 // };
 
-//
+// Display Task 
 addTaskItemButton.addEventListener("click", function () {
     let taskValue = taskInput.value;
 

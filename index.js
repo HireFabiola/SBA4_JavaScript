@@ -21,11 +21,10 @@ addTaskItem.addEventListener("click", function () {
 
     renderTaskList();
 
-
-    taskName = "";
-    taskCategory = "";
-    taskDueDate = "";
-    taskProgress = "";
+document.getElementById("Description").value = "";
+document.getElementById("categoryDropdown").value = "";
+document.getElementById("dueDate").value = "";
+document.getElementById("statusDropdown").value = "";
 
 });
 

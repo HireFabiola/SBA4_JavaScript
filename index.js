@@ -1,6 +1,8 @@
+console.log("JS loaded");
+
 let arrayofTasks = [];
 
-let addTaskItem = document.getElementById("submit");
+let addTaskItem = document.getElementById("submitTask");
 
 addTaskItem.addEventListener("click", function () {
 

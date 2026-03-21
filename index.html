@@ -18,22 +18,22 @@
 
         <select id="categoryDropdown">
             <option value="" disabled selected>--Select an option--</option>
-            <option value="option1">Work</option>
-            <option value="option2">Home</option>
-            <option value="option3">Family</option>
-            <option value="option3">Health & Wellness</option>
+            <option value="Work">Work</option>
+            <option value="Home">Home</option>
+            <option value="Family">Family</option>
+            <option value="Health & Wellness">Health & Wellness</option>
         </select>
        
 
         <input type="date" id="dueDate" name="taskDueDate" />
 
         <select id="statusDropdown">
-            <option value="" disabled selected>--Not Started--</option>
-            <option value="option1">In Progress</option>
-            <option value="option2">Completed</option>
+            <option value="Not Started" disabled selected>--Not Started--</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
         </select>
 
-        <button type="submit">Add Task</button>
+        <button id="submitTask" type="button">Add Task</button>
     </form>
     <p id="output"></p>
 

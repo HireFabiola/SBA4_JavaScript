@@ -1,6 +1,8 @@
 let arrayofTasks = [];
 
+
 let addTaskItem = document.getElementById("submitTask");
+let taskList = document.getElementById("output");
 
 addTaskItem.addEventListener("click", function () {
 
@@ -14,25 +16,24 @@ addTaskItem.addEventListener("click", function () {
         category: taskCategory,
         deadline: taskDueDate,
         progress: taskProgress,
-
-        arrayofTasks.push(taskItem);
-
-        renderTaskList(); 
-
-        
-        taskName = "";
-        taskCategory = "";
-        taskDueDate = "";
-        taskProgress = "";
-
     }
+    arrayofTasks.push(taskItem);
+
+    renderTaskList();
+
+
+    taskName = "";
+    taskCategory = "";
+    taskDueDate = "";
+    taskProgress = "";
+
 });
 
 function renderTaskList() {
     taskList.innerHTML = ""; // Clear existing list
     for (let i = 0; i < arrayofTasks.length; i++) {
         let taskListItem = document.createElement("li");
-        taskListItem.innerText = arrayofTasks[i];
+        taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress;
         taskList.appendChild(taskListItem);
     }
 }

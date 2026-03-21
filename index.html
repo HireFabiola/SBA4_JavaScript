@@ -14,7 +14,7 @@
 
     <!--User form for getting all required inputs -->
     <form id="Form">
-        <input id="Description" type="text" placeholder="Enter task name or description" required/>
+        <input id="Description" type="text" placeholder="Enter task name or description" required />
 
         <select id="categoryDropdown" required>
             <option value="" disabled selected>--Select Category--</option>
@@ -25,11 +25,11 @@
         </select>
 
 
-        <input type="date" id="dueDate" name="taskDueDate" required/>
+        <input type="date" id="dueDate" name="taskDueDate" required />
 
         <select id="statusDropdown" required>
             <option value="" disabled selected>--Select Status--</option>
-            <option  value="Not Started">Not Started</option>
+            <option value="Not Started">Not Started</option>
             <option value="In Progress">In Progress</option>
             <option value="Completed">Completed</option>
         </select>
@@ -39,6 +39,16 @@
 
     <!-- Output task list here-->
     <p id="output"></p>
+
+
+    <form id="status-form">
+        <input type="radio" name="status" value="Online" checked> Online
+        <input type="radio" name="status" value="Away"> Away
+        <input type="radio" name="status" value="Offline"> Offline
+    </form>
+
+    <div id="result">Current Status: Online</div>
+
 
 </body>
 

@@ -1,15 +1,19 @@
 let arrayofTasks = [];
 
-
-let addTaskItem = document.getElementById("submitTask"); //point to submission button
 let taskList = document.getElementById("output"); //point to screen output area
 let taskForm = document.getElementById("Form"); //point to form
 
-addTaskItem.addEventListener("click", function () {
+
+
+taskForm.addEventListener("submit", function () {
+
+    //code to prevent default form behavior of refreshing page automatically
+    event.preventDefault();
 
     // Check that all input fields are valid before proceeding
     if (!taskForm.checkValidity()) {
         taskForm.reportValidity();
+        return;
     }
 
     // Initialize variables with user input

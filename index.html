@@ -27,27 +27,21 @@
 
         <input type="date" id="dueDate" name="taskDueDate" required />
 
-        <select id="statusDropdown" required>
-            <option value="" disabled selected>--Select Status--</option>
-            <option value="Not Started">Not Started</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-        </select>
-
-        <button type="submit" id="submitTask" type="button">Add Task</button>
+        <div id="statusButtons">
+            <input type="radio" name="status" value="Not Started" checked> Not Started
+            <input type="radio" name="status" value="In Progress"> In progress
+            <input type="radio" name="status" value="Completed"> Completed
+        </div>
+       <!-- <div id="result"> Task Progress</div>-->
+        
+       <button type="submit" id="submitTask" type="button">Add Task</button>
     </form>
 
     <!-- Output task list here-->
     <p id="output"></p>
 
 
-    <form id="status-form">
-        <input type="radio" name="status" value="Online" checked> Online
-        <input type="radio" name="status" value="Away"> Away
-        <input type="radio" name="status" value="Offline"> Offline
-    </form>
 
-    <div id="result">Current Status: Online</div>
 
 
 </body>

@@ -20,7 +20,7 @@ taskForm.addEventListener("submit", function () {
     let taskName = document.getElementById("Description").value;
     let taskCategory = document.getElementById("categoryDropdown").value;
     let taskDueDate = document.getElementById("dueDate").value;
-    let taskProgress = document.getElementById("statusDropdown").value;
+    let taskProgress = document.querySelector('input[name="status"]:checked').value;
 
     // Create taskItem object, add to array, print to screen and reset user input fields
     let taskItem = {
@@ -36,7 +36,7 @@ taskForm.addEventListener("submit", function () {
     document.getElementById("Description").value = "";
     document.getElementById("categoryDropdown").value = "";
     document.getElementById("dueDate").value = "";
-    document.getElementById("statusDropdown").value = "";
+    document.getElementById("statusButtons").value = "";
 
 });
 

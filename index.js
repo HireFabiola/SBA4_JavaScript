@@ -1,16 +1,24 @@
 let arrayofTasks = [];
 
 
-let addTaskItem = document.getElementById("submitTask");
-let taskList = document.getElementById("output");
+let addTaskItem = document.getElementById("submitTask"); //point to submission button
+let taskList = document.getElementById("output"); //point to screen output area
+let taskForm = document.getElementById("Form"); //point to form
 
 addTaskItem.addEventListener("click", function () {
 
+    // Check that all input fields are valid before proceeding
+    if (!taskForm.checkValidity()) {
+        taskForm.reportValidity();
+    }
+
+    // Initialize variables with user input
     let taskName = document.getElementById("Description").value;
     let taskCategory = document.getElementById("categoryDropdown").value;
     let taskDueDate = document.getElementById("dueDate").value;
     let taskProgress = document.getElementById("statusDropdown").value;
 
+    // Create taskItem object, add to array, print to screen and reset user input fields
     let taskItem = {
         name_description: taskName,
         category: taskCategory,
@@ -21,13 +29,14 @@ addTaskItem.addEventListener("click", function () {
 
     renderTaskList();
 
-document.getElementById("Description").value = "";
-document.getElementById("categoryDropdown").value = "";
-document.getElementById("dueDate").value = "";
-document.getElementById("statusDropdown").value = "";
+    document.getElementById("Description").value = "";
+    document.getElementById("categoryDropdown").value = "";
+    document.getElementById("dueDate").value = "";
+    document.getElementById("statusDropdown").value = "";
 
 });
 
+// Clear existing list to dynamically update list with user additions/deletions 
 function renderTaskList() {
     taskList.innerHTML = ""; // Clear existing list
     for (let i = 0; i < arrayofTasks.length; i++) {

@@ -21,20 +21,21 @@
 
     <header class="d-flex flex-column align-items-center">
         <div><img src="AdobeStock_1596112825.svg" width="auto" height="100">
-        <h1>TaskApp</h1></div>
+            <h1>TaskApp</h1>
+        </div>
         <p>Getting the "TO DO" out of your head</p>
-        
+
     </header>
 
-    <form id="Form" class="bg-light">
+    <form id="Form" class="container-fluid bg-light">
         <div class="formContainer d-flex justify-content-center align-items-center vh-25">
             <div class="row w-100 mb-4 p-5">
-                <div class="col-3">
+                <div class="col-md-3">
                     <!-- Get task name or description-->
                     <input id="Description" type="text" placeholder="Task name or description" required />
                 </div>
 
-                <div class="col-3 justify-content-center align-items-center">
+                <div class="col-md-3 justify-content-center align-items-center">
                     <!-- Get category for the task-->
                     <select id="categoryDropdown" required>
                         <option value="" disabled selected>--Select Category--</option>
@@ -46,12 +47,12 @@
                 </div>
 
 
-                <div class="col-2">
+                <div class="col-md-2">
                     <!-- Get task deadline-->
                     <input type="date" id="dueDate" name="taskDueDate" required />
                 </div>
 
-                <div class="col-2">
+                <div class="col-md-2">
                     <div id="statusButtons" class="d-flex flex-column gap-1">
 
                         <label class="d-flex align-items-center gap-2">
@@ -72,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="col-2">
+                <div class="col-md-2">
                     <button type="submit" id="submitTask" type="button">Add Task</button>
                 </div>
 
@@ -82,23 +83,26 @@
 
     <section>
         <div class="row w-100 p-5">
-            <div class="col-2">
+            <div class="col-md-2">
                 <h5>Description</h5>
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 <h5>Category</h5>
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 <h5>Deadline</h5>
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 <h5>Status</h5>
-                <div id="updatedButtons"></div>
+                <div id="updatedRadioButtons">
+                    <!-- Radio buttons will be dynamically added here -->
+                </div>
+
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 <h5>Alert</h5>
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 <h5>Filter</h5>
             </div>
         </div>

@@ -45,6 +45,7 @@ function renderTaskList() {
     currentDate.setHours(0, 0, 0, 0);
 
     taskList.innerHTML = ""; // Clear existing list
+    
     for (let i = 0; i < arrayofTasks.length; i++) {
         let taskListItem = document.createElement("li");
         let dueDate = new Date(arrayofTasks[i].deadline + "T00:00:00");

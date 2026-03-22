@@ -1,5 +1,5 @@
 let arrayofTasks = [];
-
+console.log('Im at the top');
 let taskList = document.getElementById("output"); //point to screen output area
 let taskForm = document.getElementById("Form"); //point to form
 
@@ -56,43 +56,56 @@ function renderTaskList() {
         let row = document.createElement("div");
         row.className = "row w-100 mb-2 border-bottom pb-2";
 
-        // Create columns
+        // Create Description column node
         let colDesc = document.createElement("div");
         colDesc.className = "col-2";
         colDesc.innerText = taskListItem.name_description;
-
+       
+        // Create Category column node
         let colCategory = document.createElement("div");
         colCategory.className = "col-2";
         colCategory.innerText = taskListItem.category;
 
+        //Create Deadline column node
         let colDeadline = document.createElement("div");
         colDeadline.className = "col-2";
         colDeadline.innerText = taskListItem.deadline;
 
+        //Ctreate Progress Column node and radio buttons for updating status
         let colStatus = document.createElement("div");
         colStatus.className = "col-2";
         colStatus.innerText = taskListItem.progress;
+        // Recereate radio buttons and/or update progress
         let statusOptions = ["Not Started", "In Progress", "Completed"];
         statusOptions.forEach(optionText => {
-            const radioInput = document.createElement('input');
-            radioInput.type = 'radio';
-            radioInput.name = 'statusOptions';
-            radioInput.value = optionText;
-            radioInput.id = optionText.toLowerCase();
+            if (optionText !== taskListItem.progress) {
+                const radioInput = document.createElement('input');
+                radioInput.type = 'radio';
+                radioInput.name = 'statusOptions';
+                radioInput.value = optionText;
+                radioInput.addEventListener("change", function () {
+                    taskListItem.progress = optionText;
+                    renderTaskList();
+                });
+                radioInput.id = optionText.toLowerCase();
 
-            const label = document.createElement('label');
-            label.htmlFor = optionText.toLowerCase();
-            label.textContent = optionText;
+                const label = document.createElement('label');
+                label.htmlFor = optionText.toLowerCase();
 
-            label.appendChild(radioInput);
-            label.appendChild(document.createTextNode(optionText));
-            colStatus.appendChild(label);
+
+                label.appendChild(radioInput);
+                label.appendChild(document.createTextNode(optionText));
+                colStatus.appendChild(label);
+            }
         })
-            let colMessage = document.createElement("div");
+
+        //Create Alert column node for Overdue message
+        let colMessage = document.createElement("div");
         colMessage.className = "col-2";
         if ((dueDate < currentDate) && (taskListItem.progress !== "Completed"))
             colMessage.innerText = "Overdue";
 
+        //Create column to hold filer dropdown
         let colFilter = document.createElement("div");
         colFilter.className = "col-2";
         colFilter.innerText = ""; // placeholder for later

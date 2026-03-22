@@ -71,7 +71,7 @@ function renderTaskList() {
         colDeadline.className = "col-2";
         colDeadline.innerText = taskListItem.deadline;
 
-        //Ctreate Progress Column node and radio buttons for updating status
+        //Create Progress Column node and radio buttons for updating status
         let colStatus = document.createElement("div");
         colStatus.className = "col-2";
 
@@ -79,11 +79,11 @@ function renderTaskList() {
         statusText.innerText = taskListItem.progress;
         statusText.style.fontWeight = "bold";
 
-        // Append ONCE before loop
+        // Append checked option with bold styling
         colStatus.appendChild(statusText);
         colStatus.appendChild(document.createElement("br")); // optional spacing
 
-        // Recreate radio buttons
+        // Recreate radio buttons for updating to nonselected options
         let statusOptions = ["Not Started", "In Progress", "Completed"];
 
         statusOptions.forEach(optionText => {
@@ -103,7 +103,6 @@ function renderTaskList() {
 
                 label.appendChild(radioInput);
                 label.appendChild(document.createTextNode(optionText));
-
                 colStatus.appendChild(label);
             }
 
@@ -115,7 +114,7 @@ function renderTaskList() {
         if ((dueDate < currentDate) && (taskListItem.progress !== "Completed"))
             colMessage.innerText = "Overdue";
 
-        //Create column to hold filer dropdown
+        //Create column to hold filter dropdown
         let colFilter = document.createElement("div");
         colFilter.className = "col-2";
         colFilter.innerText = ""; // placeholder for later

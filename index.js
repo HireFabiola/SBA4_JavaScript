@@ -28,11 +28,8 @@ taskForm.addEventListener("submit", function () {
     const normalizedTaskDueDate = new Date(taskDueDate);
     normalizedCurrentDate.setHours(0, 0, 0, 0);
     normalizedTaskDueDate.setHours(0, 0, 0, 0);
-    if (normalizedTaskDueDate < normalizedCurrentDate) {
+    if (normalizedTaskDueDate < normalizedCurrentDate) 
         taskProgress = "Overdue";
-
-
-
 
         // Create taskItem object, add to array, print to screen and reset user input fields
         let taskItem = {
@@ -42,18 +39,11 @@ taskForm.addEventListener("submit", function () {
             progress: taskProgress,
         }
 
-
         arrayofTasks.push(taskItem);
 
         renderTaskList();
 
-        // Testing out the form reset rather than clearing out each individual input since my radio button was not clearing properly as written
-        // document.getElementById("Description").value = "";
-        // document.getElementById("categoryDropdown").value = "";
-        // document.getElementById("dueDate").value = "";
-        // document.getElementById("statusButtons").value = "";
         taskForm.reset();
-
     });
 
 // Clear existing list to dynamically update list with user additions and/or status updates
@@ -64,8 +54,6 @@ function renderTaskList() {
         taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress;
         taskList.appendChild(taskListItem);
     }
-
-
 }
 
 

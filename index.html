@@ -14,8 +14,11 @@
 
     <!--User form for getting all required inputs -->
     <form id="Form">
+
+        <!-- Get task name or description-->
         <input id="Description" type="text" placeholder="Enter task name or description" required />
 
+        <!-- Get category for the task-->
         <select id="categoryDropdown" required>
             <option value="" disabled selected>--Select Category--</option>
             <option value="Work">Work</option>
@@ -24,25 +27,21 @@
             <option value="Health & Wellness">Health & Wellness</option>
         </select>
 
-
+        <!-- Get task deadline-->
         <input type="date" id="dueDate" name="taskDueDate" required />
 
+        <!--Get task progress status-->
         <div id="statusButtons">
-            <input type="radio" name="status" value="Not Started" checked> Not Started
+            <input type="radio" name="status" value="Not Started"> Not Started
             <input type="radio" name="status" value="In Progress"> In progress
             <input type="radio" name="status" value="Completed"> Completed
         </div>
-       <!-- <div id="result"> Task Progress</div>-->
         
        <button type="submit" id="submitTask" type="button">Add Task</button>
     </form>
 
     <!-- Output task list here-->
     <p id="output"></p>
-
-
-
-
 
 </body>
 

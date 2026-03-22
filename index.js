@@ -22,36 +22,39 @@ taskForm.addEventListener("submit", function () {
     let taskDueDate = document.getElementById("dueDate").value;
     let taskProgress = document.querySelector('input[name="status"]:checked').value;
 
-    //normalize dates (ignoring time of day) then compare them
-    const currentDate = new Date();
-    const normalizedCurrentDate = new Date(currentDate);
-    const normalizedTaskDueDate = new Date(taskDueDate);
-    normalizedCurrentDate.setHours(0, 0, 0, 0);
-    normalizedTaskDueDate.setHours(0, 0, 0, 0);
-    if (normalizedTaskDueDate < normalizedCurrentDate) 
-        taskProgress = "Overdue";
+    // Create taskItem object, add to array, print to screen and reset user input fields
+    let taskItem = {
+        name_description: taskName,
+        category: taskCategory,
+        deadline: taskDueDate,
+        progress: taskProgress,
+    }
 
-        // Create taskItem object, add to array, print to screen and reset user input fields
-        let taskItem = {
-            name_description: taskName,
-            category: taskCategory,
-            deadline: taskDueDate,
-            progress: taskProgress,
-        }
+    arrayofTasks.push(taskItem);
 
-        arrayofTasks.push(taskItem);
+    renderTaskList();
 
-        renderTaskList();
-
-        taskForm.reset();
-    });
+    taskForm.reset();
+});
 
 // Clear existing list to dynamically update list with user additions and/or status updates
 function renderTaskList() {
+
+    //normalize dates (ignoring time of day) then compare them
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
     taskList.innerHTML = ""; // Clear existing list
     for (let i = 0; i < arrayofTasks.length; i++) {
         let taskListItem = document.createElement("li");
-        taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress;
+        let dueDate = new Date(arrayofTasks[i].deadline);
+        dueDate.setHours(0, 0, 0, 0);
+        if (dueDate < currentDate) {
+            taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress + " Task is overdue";
+        }
+        else {
+            taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress;
+        }
         taskList.appendChild(taskListItem);
     }
 }

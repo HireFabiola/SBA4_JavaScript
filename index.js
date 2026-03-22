@@ -22,30 +22,42 @@ taskForm.addEventListener("submit", function () {
     let taskDueDate = document.getElementById("dueDate").value;
     let taskProgress = document.querySelector('input[name="status"]:checked').value;
 
-    // Create taskItem object, add to array, print to screen and reset user input fields
-    let taskItem = {
-        name_description: taskName,
-        category: taskCategory,
-        deadline: taskDueDate,
-        progress: taskProgress,
-    }
+    //normalize dates (ignoring time of day) then compare them
+    const currentDate = new Date();
+    const normalizedCurrentDate = new Date(currentDate);
+    const normalizedTaskDueDate = new Date(taskDueDate);
+    normalizedCurrentDate.setHours(0, 0, 0, 0);
+    normalizedTaskDueDate.setHours(0, 0, 0, 0);
+    if (normalizedTaskDueDate < normalizedCurrentDate) {
+        taskProgress = "Overdue";
 
 
-    arrayofTasks.push(taskItem);
 
-    renderTaskList(taskProgress);
 
-    // Testing out the form reset rather than clearing out each individual input since my radio button was not clearing properly as written
-    // document.getElementById("Description").value = "";
-    // document.getElementById("categoryDropdown").value = "";
-    // document.getElementById("dueDate").value = "";
-    // document.getElementById("statusButtons").value = "";
-    taskForm.reset();
+        // Create taskItem object, add to array, print to screen and reset user input fields
+        let taskItem = {
+            name_description: taskName,
+            category: taskCategory,
+            deadline: taskDueDate,
+            progress: taskProgress,
+        }
 
-});
+
+        arrayofTasks.push(taskItem);
+
+        renderTaskList();
+
+        // Testing out the form reset rather than clearing out each individual input since my radio button was not clearing properly as written
+        // document.getElementById("Description").value = "";
+        // document.getElementById("categoryDropdown").value = "";
+        // document.getElementById("dueDate").value = "";
+        // document.getElementById("statusButtons").value = "";
+        taskForm.reset();
+
+    });
 
 // Clear existing list to dynamically update list with user additions and/or status updates
-function renderTaskList(updateProgress) {
+function renderTaskList() {
     taskList.innerHTML = ""; // Clear existing list
     for (let i = 0; i < arrayofTasks.length; i++) {
         let taskListItem = document.createElement("li");

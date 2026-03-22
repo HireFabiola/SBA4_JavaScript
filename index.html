@@ -15,49 +15,85 @@
 </head>
 
 <body>
-
-    <!--User form for getting all required inputs -->
     <form id="Form">
+        <div class="formContainer d-flex justify-content-center align-items-center vh-25">
+            <div class="row w-100 mb-4 p-5">
+                <div class="col-3">
+                    <!-- Get task name or description-->
+                    <input id="Description" type="text" placeholder="Enter task name or description" required />
+                </div>
 
-        <!-- Get task name or description-->
-        <input id="Description" type="text" placeholder="Enter task name or description" required />
+                <div class="col-3 justify-content-center align-items-center">
+                    <!-- Get category for the task-->
+                    <select id="categoryDropdown" required>
+                        <option value="" disabled selected>--Select Category--</option>
+                        <option value="Work">Work</option>
+                        <option value="Home">Home</option>
+                        <option value="Family">Family</option>
+                        <option value="Health & Wellness">Health & Wellness</option>
+                    </select>
+                </div>
 
-        <!-- Get category for the task-->
-        <select id="categoryDropdown" required>
-            <option value="" disabled selected>--Select Category--</option>
-            <option value="Work">Work</option>
-            <option value="Home">Home</option>
-            <option value="Family">Family</option>
-            <option value="Health & Wellness">Health & Wellness</option>
-        </select>
 
-        <!-- Get task deadline-->
-        <input type="date" id="dueDate" name="taskDueDate" required />
+                <div class="col-2">
+                    <!-- Get task deadline-->
+                    <input type="date" id="dueDate" name="taskDueDate" required />
+                </div>
 
-        <!--Get task progress status-->
-        <div id="statusButtons">
-            <input type="radio" name="status" value="Not Started"> Not Started
-            <input type="radio" name="status" value="In Progress"> In progress
-            <input type="radio" name="status" value="Completed"> Completed
+                <div class="col-2">
+                    <div id="statusButtons" class="d-flex flex-column gap-1">
+
+                        <label class="d-flex align-items-center gap-2">
+                            <input type="radio" name="status" value="Not Started">
+                            <span>Not Started</span>
+                        </label>
+
+                        <label class="d-flex align-items-center gap-2">
+                            <input type="radio" name="status" value="In Progress">
+                            <span>In Progress</span>
+                        </label>
+
+                        <label class="d-flex align-items-center gap-2">
+                            <input type="radio" name="status" value="Completed">
+                            <span>Completed</span>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <button type="submit" id="submitTask" type="button">Add Task</button>
+                </div>
+
+            </div>
         </div>
-        
-       <button type="submit" id="submitTask" type="button">Add Task</button>
     </form>
 
- 
+    <section>
+        <div class="row w-100">
+            <div class="col-2">
+                <h5>Description</h5>
+            </div>
+            <div class="col-2">
+                <h5>Category</h5>
+            </div>
+            <div class="col-2">
+                <h5>Deadline</h5>
+            </div>
+            <div class="col-2">
+                <h5>Status</h5>
+                <div id="updatedButtons"></div>
+            </div>
+            <div class="col-2">
+                <h5>Alert</h5>
+            </div>
+            <div class="col-2">
+                <h5>Filter</h5>
+            </div>
+        </div>
 
-<section>
-    <div class="row w-100">
-        <div class="col-2"><h5>Description</h5></div>
-        <div class="col-2"><h5>Category</h5></div>
-        <div class="col-2"><h5>Deadline</h5></div>
-        <div class="col-2"><h5>Status</h5></div>
-        <div class="col-2"><h5>Alert</h5></div>
-        <div class="col-2"><h5>Filter</h5></div>
-    </div>
-
-    <p id="output"></p>
-</section>
+        <p id="output"></p>
+    </section>
 
 </body>
 

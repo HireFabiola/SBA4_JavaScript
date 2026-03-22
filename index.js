@@ -88,8 +88,8 @@ function renderTaskList() {
 
         let colMessage = document.createElement("div");
         colMessage.className = "col-2";
-        if ((dueDate < currentDate) && (arrayofTasks[i].progress !== "Completed"))
-        colMessage.innerText = "Overdue";
+        if ((dueDate < currentDate) && (taskListItem.progress !== "Completed"))
+            colMessage.innerText = "Overdue";
 
         // Append columns to row
         row.appendChild(colDesc);
@@ -98,10 +98,8 @@ function renderTaskList() {
         row.appendChild(colStatus);
         row.appendChild(colMessage);
         row.appendChild(colFilter);
-        
 
         taskList.appendChild(row)
-
     }
 }
 

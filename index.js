@@ -4,7 +4,6 @@ let taskList = document.getElementById("output"); //point to screen output area
 let taskForm = document.getElementById("Form"); //point to form
 
 
-
 taskForm.addEventListener("submit", function () {
 
     //code to prevent default form behavior of refreshing page automatically
@@ -53,14 +52,6 @@ function renderTaskList() {
         let dueDate = new Date(arrayofTasks[i].deadline + "T00:00:00");
         dueDate.setHours(0, 0, 0, 0);
 
-        //if ((dueDate < currentDate) && (arrayofTasks[i].progress !== "Completed")) {
-        //     taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress + " Task is overdue";
-        // }
-        // else {
-        //taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress;
-        // }
-        // taskList.appendChild(taskListItem);
-
         // Create row
         let row = document.createElement("div");
         row.className = "row w-100 mb-2 border-bottom pb-2";
@@ -81,15 +72,31 @@ function renderTaskList() {
         let colStatus = document.createElement("div");
         colStatus.className = "col-2";
         colStatus.innerText = taskListItem.progress;
+        let statusOptions = ["Not Started", "In Progress", "Completed"];
+        statusOptions.forEach(optionText => {
+            const radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = 'statusOptions';
+            radioInput.value = optionText;
+            radioInput.id = optionText.toLowerCase();
+
+            const label = document.createElement('label');
+            label.htmlFor = optionText.toLowerCase();
+            label.textContent = optionText;
+
+            label.appendChild(radioInput);
+            label.appendChild(document.createTextNode(optionText));
+            colStatus.appendChild(label);
+        })
+            let colMessage = document.createElement("div");
+        colMessage.className = "col-2";
+        if ((dueDate < currentDate) && (taskListItem.progress !== "Completed"))
+            colMessage.innerText = "Overdue";
 
         let colFilter = document.createElement("div");
         colFilter.className = "col-2";
         colFilter.innerText = ""; // placeholder for later
 
-        let colMessage = document.createElement("div");
-        colMessage.className = "col-2";
-        if ((dueDate < currentDate) && (taskListItem.progress !== "Completed"))
-            colMessage.innerText = "Overdue";
 
         // Append columns to row
         row.appendChild(colDesc);
@@ -102,6 +109,8 @@ function renderTaskList() {
         taskList.appendChild(row)
     }
 }
+
+
 
 
 

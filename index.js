@@ -1,5 +1,5 @@
 let arrayofTasks = [];
-console.log('Im at the top');
+const filterOptions = [{ value: "byDate", text: "By Date" }, { value: "byStatus", text: "By Status" }];
 let taskList = document.getElementById("output"); //point to screen output area
 let taskForm = document.getElementById("Form"); //point to form
 
@@ -32,8 +32,10 @@ taskForm.addEventListener("submit", function () {
     arrayofTasks.push(taskItem);
 
     renderTaskList();
-
+    createFilterDD(filterOptions);
     taskForm.reset();
+
+
 });
 
 // Clear existing list to dynamically update list with user additions and/or status updates
@@ -100,14 +102,12 @@ function renderTaskList() {
                 });
 
                 const label = document.createElement('label');
-
                 label.appendChild(radioInput);
                 label.appendChild(document.createTextNode(optionText));
                 colStatus.appendChild(label);
             }
-
         })
-
+       
         //Create Alert column node for Overdue message
         let colMessage = document.createElement("div");
         colMessage.className = "col-2";
@@ -117,9 +117,7 @@ function renderTaskList() {
         //Create column to hold filter dropdown
         let colFilter = document.createElement("div");
         colFilter.className = "col-2";
-        colFilter.innerText = ""; // placeholder for later
-
-
+        colFilter.innerText = "";
         // Append columns to row
         row.appendChild(colDesc);
         row.appendChild(colCategory);
@@ -128,9 +126,30 @@ function renderTaskList() {
         row.appendChild(colMessage);
         row.appendChild(colFilter);
 
-        taskList.appendChild(row)
+        taskList.appendChild(row);
     }
 }
+
+function createFilterDD(dataArray) {
+    let filterDD = document.getElementById("filterDropdown");
+    filterDD.innerHTML = "";
+
+    dataArray.forEach(item => {
+        // Create a new option element
+        const option = document.createElement('option');
+
+        // Set the value and text content of the option
+        option.value = item.value;
+        option.text = item.text;
+
+        // Append the option to the select element
+        filterDD.appendChild(option);
+    });
+}
+
+
+
+
 
 
 

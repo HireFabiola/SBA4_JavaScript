@@ -40,7 +40,7 @@ taskForm.addEventListener("submit", function () {
 // Clear existing list to dynamically update list with user additions and/or status updates
 function renderTaskList() {
 
-    //normalize dates (ignoring time of day) then compare them
+    //normalize dates (ignoring time of day) then compare them to decide overdue status
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
 

@@ -60,7 +60,7 @@ function renderTaskList() {
         let colDesc = document.createElement("div");
         colDesc.className = "col-2";
         colDesc.innerText = taskListItem.name_description;
-       
+
         // Create Category column node
         let colCategory = document.createElement("div");
         colCategory.className = "col-2";
@@ -74,29 +74,39 @@ function renderTaskList() {
         //Ctreate Progress Column node and radio buttons for updating status
         let colStatus = document.createElement("div");
         colStatus.className = "col-2";
-        colStatus.innerText = taskListItem.progress;
-        // Recereate radio buttons and/or update progress
+
+        let statusText = document.createElement("span");
+        statusText.innerText = taskListItem.progress;
+        statusText.style.fontWeight = "bold";
+
+        // Append ONCE before loop
+        colStatus.appendChild(statusText);
+        colStatus.appendChild(document.createElement("br")); // optional spacing
+
+        // Recreate radio buttons
         let statusOptions = ["Not Started", "In Progress", "Completed"];
+
         statusOptions.forEach(optionText => {
             if (optionText !== taskListItem.progress) {
+
                 const radioInput = document.createElement('input');
                 radioInput.type = 'radio';
-                radioInput.name = 'statusOptions';
+                radioInput.name = `status-${i}`;
                 radioInput.value = optionText;
+
                 radioInput.addEventListener("change", function () {
                     taskListItem.progress = optionText;
                     renderTaskList();
                 });
-                radioInput.id = optionText.toLowerCase();
 
                 const label = document.createElement('label');
-                label.htmlFor = optionText.toLowerCase();
-
 
                 label.appendChild(radioInput);
                 label.appendChild(document.createTextNode(optionText));
+
                 colStatus.appendChild(label);
             }
+
         })
 
         //Create Alert column node for Overdue message

@@ -47,9 +47,9 @@ function renderTaskList() {
     taskList.innerHTML = ""; // Clear existing list
     for (let i = 0; i < arrayofTasks.length; i++) {
         let taskListItem = document.createElement("li");
-        let dueDate = new Date(arrayofTasks[i].deadline);
+        let dueDate = new Date(arrayofTasks[i].deadline + "T00:00:00");
         dueDate.setHours(0, 0, 0, 0);
-        if (dueDate < currentDate) {
+        if ((dueDate < currentDate)&&(arrayofTasks[i].progress !== "Completed")) {
             taskListItem.innerText = arrayofTasks[i].name_description + " " + arrayofTasks[i].category + " " + arrayofTasks[i].deadline + " " + arrayofTasks[i].progress + " Task is overdue";
         }
         else {

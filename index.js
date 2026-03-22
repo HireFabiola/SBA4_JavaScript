@@ -35,10 +35,12 @@ taskForm.addEventListener("submit", function () {
 
     renderTaskList(taskProgress);
 
-    document.getElementById("Description").value = "";
-    document.getElementById("categoryDropdown").value = "";
-    document.getElementById("dueDate").value = "";
-    document.getElementById("statusButtons").value = "";
+    // Testing out the form reset rather than clearing out each individual input since my radio button was not clearing properly as written
+    // document.getElementById("Description").value = "";
+    // document.getElementById("categoryDropdown").value = "";
+    // document.getElementById("dueDate").value = "";
+    // document.getElementById("statusButtons").value = "";
+    taskForm.reset();
 
 });
 

@@ -4,7 +4,7 @@ let taskList = document.getElementById("output"); //point to screen output area
 let taskForm = document.getElementById("Form"); //point to form
 
 let currentFilter = "ALL"
-const filterOptions = [{ value: "ALL", text: "ALL" }, { value: "Work", text: "Work" }, { value: "Home", text: "Home"}, { value:"Family", text: "Family" },{ value: "In Progress", text: "In Progress" },{ value: "Not Started", text: "Not Started" },{ value: "Completed", text: "Completed"},{ value: "Health & Wellness", text: "Health & Wellness" }];
+const filterOptions = [{ value: "ALL", text: "ALL" }, { value: "Work", text: "Work" }, { value: "Home", text: "Home" }, { value: "Family", text: "Family" }, { value: "In Progress", text: "In Progress" }, { value: "Not Started", text: "Not Started" }, { value: "Completed", text: "Completed" }, { value: "Health & Wellness", text: "Health & Wellness" }];
 let dropdown = document.getElementById("filterDropdown");
 
 dropdown.addEventListener("change", function () {
@@ -19,7 +19,7 @@ taskForm.addEventListener("submit", function (event) {
 
     //code to prevent default form behavior of refreshing page automatically
     event.preventDefault();
-console.log("form submitted but prevented");
+    console.log("form submitted but prevented");
     // Check that all input fields are valid before proceeding
     if (!taskForm.checkValidity()) {
         taskForm.reportValidity();
@@ -62,9 +62,9 @@ function renderTaskList() {
         // let taskListItem = document.createElement("li");
         let taskListItem = arrayofTasks[i];
         console.log(arrayofTasks);
-        if (currentFilter !== "ALL" &&  taskListItem.category !== currentFilter && taskListItem.progress !== currentFilter) {
+        if (currentFilter !== "ALL" && taskListItem.category !== currentFilter && taskListItem.progress !== currentFilter) {
             console.log('i am in the filter break if statement');
-            continue;  
+            continue;
         }
 
         let dueDate = new Date(arrayofTasks[i].deadline + "T00:00:00");
@@ -127,9 +127,11 @@ function renderTaskList() {
         //Create Alert column node for Overdue message
         let colMessage = document.createElement("div");
         colMessage.className = "col-2";
-        if ((dueDate < currentDate) && (taskListItem.progress !== "Completed"))
+        if ((dueDate < currentDate) && (taskListItem.progress !== "Completed")){
             colMessage.innerText = "Overdue";
-
+            row.classList.add("border", "border-danger");
+        }
+        
         //Create column to hold filter dropdown
         let colFilter = document.createElement("div");
         colFilter.className = "col-2";

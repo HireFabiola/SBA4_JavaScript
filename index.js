@@ -126,15 +126,15 @@ function renderTaskList() {
 
         //Create Alert column node for Overdue message
         let colMessage = document.createElement("div");
-        colMessage.className = "col-2";
+        colMessage.className = "row w-100 mb-2 border-bottom pb-2";
         if ((dueDate < currentDate) && (taskListItem.progress !== "Completed")){
             colMessage.innerText = "Overdue";
             row.classList.add("border", "border-danger");
         }
-        
+
         //Create column to hold filter dropdown
         let colFilter = document.createElement("div");
-        colFilter.className = "col-2";
+        colFilter.className = "row w-100 mb-2 border-bottom pb-2";
         colFilter.innerText = "";
 
         // Append columns to row

@@ -3,7 +3,7 @@ let arrayofTasks = [];
 let taskList = document.getElementById("output"); //point to screen output area
 let taskForm = document.getElementById("Form"); //point to form
 
-let currentFilter = "all"
+let currentFilter = "ALL"
 const filterOptions = [{ value: "ALL", text: "ALL" }, { value: "Work", text: "Work" }, { value: "Home", text: "Home"}, { value:"Family", text: "Family" },{ value: "In Progress", text: "In Progress" },{ value: "Not Started", text: "Not Started" },{ value: "Completed", text: "Completed"},{ value: "Health & Wellness", text: "Health & Wellness" }];
 let dropdown = document.getElementById("filterDropdown");
 
@@ -62,7 +62,7 @@ function renderTaskList() {
         // let taskListItem = document.createElement("li");
         let taskListItem = arrayofTasks[i];
         console.log(arrayofTasks);
-        if (currentFilter !== "all" && taskListItem.category !== currentFilter) {
+        if (currentFilter !== "ALL" &&  taskListItem.category !== currentFilter && taskListItem.progress !== currentFilter) {
             console.log('i am in the filter break if statement');
             continue;  
         }

@@ -76,22 +76,22 @@ function renderTaskList() {
 
         // Create Description column node
         let colDesc = document.createElement("div");
-        colDesc.className = "col-2";
+        colDesc.className = "col-12 col-md-2 mb-2";
         colDesc.innerText = taskListItem.name_description;
 
         // Create Category column node
         let colCategory = document.createElement("div");
-        colCategory.className = "col-2";
+        colCategory.className = "col-12 col-md-2 mb-2";
         colCategory.innerText = taskListItem.category;
 
         //Create Deadline column node
         let colDeadline = document.createElement("div");
-        colDeadline.className = "col-2";
+        colDeadline.className = "col-12 col-md-2 mb-2";
         colDeadline.innerText = taskListItem.deadline;
 
         //Create Progress Column node and radio buttons for updating status
         let colStatus = document.createElement("div");
-        colStatus.className = "col-2";
+        colStatus.className = "col-12 col-md-2 mb-2";
 
         let statusText = document.createElement("span");
         statusText.innerText = taskListItem.progress;

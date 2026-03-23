@@ -18,25 +18,24 @@
 </head>
 
 <body class="container-fluid">
-    <header class="d-flex flex-column align-items-center">
-        <div><img src="AdobeStock_1596112825.svg" width="auto" height="100">
+    <header class="d-flex flex-column justify-content-center align-items-center">
+        <img src="AdobeStock_1596112825.svg" width="auto" height="100">
             <h1>TaskApp</h1>
-        </div>
         <p>Getting the "TO DO" out of your head</p>
-
     </header>
 
     <form id="Form" class="container-fluid bg-light">
-        <div class="formContainer d-flex justify-content-center align-items-center vh-25">
+        <div class="container-fluid d-flex justify-content-center align-items-center vh-25">
             <div class="row w-100 mb-4 p-5">
-                <div class="col-md-3">
+                <div class="col-12 col-md-3 mb-2 justify-content-center align-items-center">
+
                     <!-- Get task name or description-->
-                    <input id="Description" type="text" placeholder="Task name or description" required />
+                    <input id="Description" type="text" class="form-control" placeholder="Task name or description" required />
                 </div>
 
-                <div class="col-md-3 justify-content-center align-items-center">
+                <div class="col-12 col-md-3 mb-2 justify-content-center align-items-center">
                     <!-- Get category for the task-->
-                    <select id="categoryDropdown" required>
+                    <select class="form-select"id="categoryDropdown" required>
                         <option value="" disabled selected>--Select Category--</option>
                         <option value="Work">Work</option>
                         <option value="Home">Home</option>
@@ -46,12 +45,12 @@
                 </div>
 
 
-                <div class="col-md-2">
+                <div class="col-12 col-md-2 mb-2">
                     <!-- Get task deadline-->
-                    <input type="date" id="dueDate" name="taskDueDate" required />
+                    <input type="date" id="dueDate" class="form-control" name="taskDueDate" required />
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-12 col-md-2 mb-2 justify-content-center align-items-center">
                     <div id="statusButtons" class="d-flex flex-column gap-1">
 
                         <label class="d-flex align-items-center gap-2">
@@ -72,8 +71,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-2">
-                    <button type="submit" id="submitTask" type="button">Add Task</button>
+                <div class="col-12 col-md-2 mb-2">
+                    <button class="form-control" type="submit" id="submitTask" type="button">Add Task</button>
                 </div>
 
             </div>
@@ -104,6 +103,7 @@
             </select>
         </div>
 
+        <!-- Display task list items here-->
         <p id="output" class="bg-light justify-content-center align-items-center p-5"></p>
     </section>
 

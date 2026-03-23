@@ -1,14 +1,25 @@
 let arrayofTasks = [];
-const filterOptions = [{ value: "byDate", text: "By Date" }, { value: "byStatus", text: "By Status" }];
+
 let taskList = document.getElementById("output"); //point to screen output area
 let taskForm = document.getElementById("Form"); //point to form
 
+let currentFilter = "all"
+const filterOptions = [{ value: "ALL", text: "ALL" }, { value: "Work", text: "Work" }, { value: "Home", text: "Home"}, { value:"Family", text: "Family" },{ value: "In Progress", text: "In Progress" },{ value: "Not Started", text: "Not Started" },{ value: "Completed", text: "Completed"},{ value: "Health & Wellness", text: "Health & Wellness" }];
+let dropdown = document.getElementById("filterDropdown");
 
-taskForm.addEventListener("submit", function () {
+dropdown.addEventListener("change", function () {
+    console.log('I am in the filter listener');
+    currentFilter = dropdown.value;
+    console.log(currentFilter);
+    renderTaskList();
+});
+
+
+taskForm.addEventListener("submit", function (event) {
 
     //code to prevent default form behavior of refreshing page automatically
     event.preventDefault();
-
+console.log("form submitted but prevented");
     // Check that all input fields are valid before proceeding
     if (!taskForm.checkValidity()) {
         taskForm.reportValidity();
@@ -40,7 +51,7 @@ taskForm.addEventListener("submit", function () {
 
 // Clear existing list to dynamically update list with user additions and/or status updates
 function renderTaskList() {
-
+    console.log('did i make it here?');
     //normalize dates (ignoring time of day) then compare them to decide overdue status
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
@@ -50,6 +61,11 @@ function renderTaskList() {
     for (let i = 0; i < arrayofTasks.length; i++) {
         // let taskListItem = document.createElement("li");
         let taskListItem = arrayofTasks[i];
+        console.log(arrayofTasks);
+        if (currentFilter !== "all" && taskListItem.category !== currentFilter) {
+            console.log('i am in the filter break if statement');
+            continue;  
+        }
 
         let dueDate = new Date(arrayofTasks[i].deadline + "T00:00:00");
         dueDate.setHours(0, 0, 0, 0);
@@ -107,7 +123,7 @@ function renderTaskList() {
                 colStatus.appendChild(label);
             }
         })
-       
+
         //Create Alert column node for Overdue message
         let colMessage = document.createElement("div");
         colMessage.className = "col-2";
@@ -118,6 +134,7 @@ function renderTaskList() {
         let colFilter = document.createElement("div");
         colFilter.className = "col-2";
         colFilter.innerText = "";
+
         // Append columns to row
         row.appendChild(colDesc);
         row.appendChild(colCategory);

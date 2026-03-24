@@ -81,7 +81,6 @@ function renderTaskList() {
         let colDesc = document.createElement("div");
         colDesc.className = "col-12 col-md-2 mb-2";
         if (viewportWidth < 768) {
-            console.log('I should be here');
             colDesc.innerText = "Description: " + taskListItem.name_description;
         }
         else
@@ -92,9 +91,9 @@ function renderTaskList() {
         colCategory.className = "col-12 col-md-2 mb-2";
         if (viewportWidth < 768) {
             colCategory.innerText = "Category: " + taskListItem.category;
-        }
+        }else{
         colCategory.innerText = taskListItem.category;
-
+}
 
         //Create Deadline column node
         let colDeadline = document.createElement("div");

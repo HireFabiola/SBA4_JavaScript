@@ -81,7 +81,7 @@ function renderTaskList() {
         let colDesc = document.createElement("div");
         colDesc.className = "col-12 col-md-2 mb-2";
         if (viewportWidth < 768) {
-            colDesc.innerText = "Description: " + taskListItem.name_description;
+            colDesc.innerText = "Task description: " + taskListItem.name_description;
         }
         else
             colDesc.innerText = taskListItem.name_description;
@@ -91,17 +91,17 @@ function renderTaskList() {
         colCategory.className = "col-12 col-md-2 mb-2";
         if (viewportWidth < 768) {
             colCategory.innerText = "Category: " + taskListItem.category;
-        }else{
-        colCategory.innerText = taskListItem.category;
-}
+        } else {
+            colCategory.innerText = taskListItem.category;
+        }
 
         //Create Deadline column node
         let colDeadline = document.createElement("div");
         colDeadline.className = "col-12 col-md-2 mb-2";
         if (viewportWidth < 768) {
-            colDeadline.innerText = "Deadline: " + taskListItem.deadline;   
-        }else{
-            colDeadline.innerText =taskListItem.deadline;
+            colDeadline.innerText = "Deadline: " + taskListItem.deadline;
+        } else {
+            colDeadline.innerText = taskListItem.deadline;
         }
 
 
@@ -144,7 +144,7 @@ function renderTaskList() {
 
         //Create Alert column node for Overdue message
         let colMessage = document.createElement("div");
-        colMessage.className = "row w-100 mb-2 border-bottom pb-2";
+        colMessage.className = "col-12 col-md-2 mb-2";
         if ((dueDate < currentDate) && (taskListItem.progress !== "Completed")) {
             colMessage.innerText = "Overdue";
             row.classList.add("border", "border-danger");
@@ -152,7 +152,7 @@ function renderTaskList() {
 
         //Create column to hold filter dropdown
         let colFilter = document.createElement("div");
-        colFilter.className = "row w-100 mb-2 border-bottom pb-2";
+        colFilter.className = "col-12 col-md-2 mb-2";
         colFilter.innerText = "";
 
         // Append columns to row

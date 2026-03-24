@@ -72,26 +72,26 @@ function renderTaskList() {
 
         // Create row
         let row = document.createElement("div");
-        row.className = "row w-100 mb-3 p-3 shadow-sm rounded bg-light";
+        row.className = "row w-100 mb-2 border-bottom pb-2";
 
         // Create Description column node
         let colDesc = document.createElement("div");
-        colDesc.className = "col-12 col-md-2 mb-2";
-        colDesc.innerText = "Description: " + taskListItem.name_description;
+        colDesc.className = "col-2";
+        colDesc.innerText = taskListItem.name_description;
 
         // Create Category column node
         let colCategory = document.createElement("div");
-        colCategory.className = "col-12 col-md-2 mb-2";
-        colCategory.innerText = "Category: " + taskListItem.category;
+        colCategory.className = "col-2";
+        colCategory.innerText = taskListItem.category;
 
         //Create Deadline column node
         let colDeadline = document.createElement("div");
-        colDeadline.className = "col-12 col-md-2 mb-2";
-        colDeadline.innerText = "Deadline: " + taskListItem.deadline;
+        colDeadline.className = "col-2";
+        colDeadline.innerText = taskListItem.deadline;
 
         //Create Progress Column node and radio buttons for updating status
         let colStatus = document.createElement("div");
-        colStatus.className = "col-12 col-md-2 mb-2";
+        colStatus.className = "col-2";
 
         let statusText = document.createElement("span");
         statusText.innerText = taskListItem.progress;
@@ -118,8 +118,6 @@ function renderTaskList() {
                 });
 
                 const label = document.createElement('label');
-                label.style.display = "block";
-                label.style.marginLeft = "10px";
                 label.appendChild(radioInput);
                 label.appendChild(document.createTextNode(optionText));
                 colStatus.appendChild(label);
@@ -128,15 +126,13 @@ function renderTaskList() {
 
         //Create Alert column node for Overdue message
         let colMessage = document.createElement("div");
-        colMessage.className = "row w-100 mb-2 border-bottom pb-2";
-        if ((dueDate < currentDate) && (taskListItem.progress !== "Completed")) {
+        colMessage.className = "col-2";
+        if ((dueDate < currentDate) && (taskListItem.progress !== "Completed"))
             colMessage.innerText = "Overdue";
-            row.classList.add("border", "border-danger");
-        }
 
         //Create column to hold filter dropdown
         let colFilter = document.createElement("div");
-        colFilter.className = "row w-100 mb-2 border-bottom pb-2";
+        colFilter.className = "col-2";
         colFilter.innerText = "";
 
         // Append columns to row

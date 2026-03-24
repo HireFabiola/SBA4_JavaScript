@@ -70,24 +70,41 @@ function renderTaskList() {
         let dueDate = new Date(arrayofTasks[i].deadline + "T00:00:00");
         dueDate.setHours(0, 0, 0, 0);
 
+        // Get the current viewport width
+        let viewportWidth = window.innerWidth;
+
         // Create row
         let row = document.createElement("div");
         row.className = "row w-100 mb-3 p-3 shadow-sm rounded bg-light";
 
-        // Create Description column node
+        // Create Description column node and format output based on current screen size
         let colDesc = document.createElement("div");
         colDesc.className = "col-12 col-md-2 mb-2";
-        colDesc.innerText = "Description: " + taskListItem.name_description;
+        if (viewportWidth < 768) {
+            console.log('I should be here');
+            colDesc.innerText = "Description: " + taskListItem.name_description;
+        }
+        else
+            colDesc.innerText = taskListItem.name_description;
 
         // Create Category column node
         let colCategory = document.createElement("div");
         colCategory.className = "col-12 col-md-2 mb-2";
-        colCategory.innerText = "Category: " + taskListItem.category;
+        if (viewportWidth < 768) {
+            colCategory.innerText = "Category: " + taskListItem.category;
+        }
+        colCategory.innerText = taskListItem.category;
+
 
         //Create Deadline column node
         let colDeadline = document.createElement("div");
         colDeadline.className = "col-12 col-md-2 mb-2";
-        colDeadline.innerText = "Deadline: " + taskListItem.deadline;
+        if (viewportWidth < 768) {
+            colDeadline.innerText = "Deadline: " + taskListItem.deadline;   
+        }else{
+            colDeadline.innerText =taskListItem.deadline;
+        }
+
 
         //Create Progress Column node and radio buttons for updating status
         let colStatus = document.createElement("div");

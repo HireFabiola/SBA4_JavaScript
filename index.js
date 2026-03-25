@@ -7,6 +7,20 @@ let currentFilter = "ALL"
 const filterOptions = [{ value: "ALL", text: "ALL" }, { value: "Work", text: "Work" }, { value: "Home", text: "Home" }, { value: "Family", text: "Family" }, { value: "In Progress", text: "In Progress" }, { value: "Not Started", text: "Not Started" }, { value: "Completed", text: "Completed" }, { value: "Health & Wellness", text: "Health & Wellness" }];
 let dropdown = document.getElementById("filterDropdown");
 
+//Define variables used in handling responsiveness
+const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+function handleScreenChange(e) {
+    console.log("Screen size changed!", e.matches);
+    renderTaskList(); // 🔥 
+}
+
+// Run once on load
+handleScreenChange(mediaQuery);
+
+// Listen for changes
+mediaQuery.addEventListener("change", handleScreenChange);
+
 dropdown.addEventListener("change", function () {
     console.log('I am in the filter listener');
     currentFilter = dropdown.value;

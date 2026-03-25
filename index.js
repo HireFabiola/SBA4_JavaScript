@@ -79,7 +79,7 @@ function renderTaskList() {
 
         // Create Description column node and format output based on current screen size
         let colDesc = document.createElement("div");
-        colDesc.className = "col-12 col-md-2 mb-2";
+        colDesc.className = "col-12 col-md-2 mb-2 text-center text-md-start";
         if (viewportWidth < 768) {
             colDesc.innerText = "Task description: " + taskListItem.name_description;
         }
@@ -88,7 +88,7 @@ function renderTaskList() {
 
         // Create Category column node
         let colCategory = document.createElement("div");
-        colCategory.className = "col-12 col-md-2 mb-2";
+        colCategory.className = "col-12 col-md-2 mb-2 text-center text-md-start";
         if (viewportWidth < 768) {
             colCategory.innerText = "Category: " + taskListItem.category;
         } else {
@@ -97,7 +97,7 @@ function renderTaskList() {
 
         //Create Deadline column node
         let colDeadline = document.createElement("div");
-        colDeadline.className = "col-12 col-md-2 mb-2";
+        colDeadline.className = "col-12 col-md-2 mb-2 text-center text-md-start";
         if (viewportWidth < 768) {
             colDeadline.innerText = "Deadline: " + taskListItem.deadline;
         } else {
@@ -107,7 +107,7 @@ function renderTaskList() {
 
         //Create Progress Column node and radio buttons for updating status
         let colStatus = document.createElement("div");
-        colStatus.className = "col-12 col-md-2 mb-2";
+        colStatus.className = "col-12 col-md-2 mb-2 text-center text-md-start";
 
         let statusText = document.createElement("span");
         statusText.innerText = taskListItem.progress;
@@ -144,15 +144,15 @@ function renderTaskList() {
 
         //Create Alert column node for Overdue message
         let colMessage = document.createElement("div");
-        colMessage.className = "col-12 col-md-2 mb-2";
+        colMessage.className = "col-12 col-md-2 mb-2 text-center text-md-start";
         if ((dueDate < currentDate) && (taskListItem.progress !== "Completed")) {
-            colMessage.innerText = "Overdue";
+            colMessage.innerHTML = '<span class="text-danger fw-bold">Overdue</span>';
             row.classList.add("border", "border-danger");
         }
 
         //Create column to hold filter dropdown
         let colFilter = document.createElement("div");
-        colFilter.className = "col-12 col-md-2 mb-2";
+        colFilter.className = "col-12 col-md-2 mb-2 text-center text-md-start";
         colFilter.innerText = "";
 
         // Append columns to row
